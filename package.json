@@ -40,6 +40,6 @@
     "unrs-resolver"
   ],
   "lint-staged": {
-    "*": "prettier --write"
+    "**/*.{js,jsx,ts,tsx,json,md,css}": "prettier --write"
   }
 }
