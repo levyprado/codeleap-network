@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
-import { Outfit } from 'next/font/google'
+import { Inter_Tight } from 'next/font/google'
 import './globals.css'
 
-const outfitSans = Outfit({
-  variable: '--font-outfit',
+const inter = Inter_Tight({
+  variable: '--font-inter',
   subsets: ['latin'],
 })
 
 export const metadata: Metadata = {
-  title: 'CodeLeap Frontend Developer Test',
-  description: 'Hands-on project for CodeLeap',
+  title: 'CodeLeap Frontend Test',
+  description: 'Hands-on project for CodeLeap Frontend Developer position.',
 }
 
 export default function RootLayout({
@@ -19,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${outfitSans.variable} antialiased`}>{children}</body>
+      <body className={`${inter.variable} relative isolate antialiased`}>
+        {children}
+      </body>
     </html>
   )
 }
