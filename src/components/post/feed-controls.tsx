@@ -23,11 +23,11 @@ export default function FeedControls() {
       </div>
 
       <div className='flex items-center gap-2 text-sm'>
-        <Button size='sm' variant='outline'>
+        <Button size='sm' variant='outline' aria-label='Sort'>
           <Icon icon={ArrowUpDownIcon} />
           <span className='hidden md:inline-block'>Sort</span>
         </Button>
-        <Button size='sm' variant='outline'>
+        <Button size='sm' variant='outline' aria-label='Filter'>
           <Icon icon={SlidersHorizontalIcon} />{' '}
           <span className='hidden md:inline-block'>Filter</span>
         </Button>
