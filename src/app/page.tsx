@@ -1,9 +1,9 @@
+import Header from '@/components/header'
 import CreatePostForm from '@/components/post/create-post-form'
 import PostItem from '@/components/post/post-item'
 import Button from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
 import Input from '@/components/ui/input'
-import UserMenu from '@/components/user-menu'
 import {
   ArrowUpDownIcon,
   SearchIcon,
@@ -12,14 +12,8 @@ import {
 
 export default function HomePage() {
   return (
-    <div className='mx-auto flex h-[95dvh] w-full max-w-3xl flex-col overflow-hidden rounded-xl border'>
-      <header className='flex h-16 items-center justify-between gap-3 bg-brand px-6'>
-        <h1 className='text-xl font-bold text-balance text-white md:text-2xl'>
-          CodeLeap Network
-        </h1>
-
-        <UserMenu />
-      </header>
+    <div className='mx-auto flex h-[95dvh] w-full max-w-3xl animate-slide-up flex-col overflow-hidden rounded-xl border'>
+      <Header />
 
       <div className='flex flex-1 flex-col overflow-hidden bg-card'>
         <div className='px-4 pt-6 pb-4 md:px-8'>
