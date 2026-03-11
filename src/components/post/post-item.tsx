@@ -23,7 +23,7 @@ export default function PostItem({
   const initial = username[0]
 
   return (
-    <article className='flex shrink-0 flex-col overflow-hidden rounded-xl border bg-card shadow-sm shadow-accent/30 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-md'>
+    <article className='flex shrink-0 animate-slide-up flex-col overflow-hidden rounded-xl border bg-card shadow-sm shadow-accent/30 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-md'>
       <div className='flex items-center justify-between bg-accent px-4 py-3'>
         <h3 className='leading-tight font-medium tracking-wide text-white md:text-lg'>
           {title}
