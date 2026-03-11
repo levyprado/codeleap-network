@@ -48,7 +48,24 @@
     linear-gradient(25deg, var(--brand-primary), transparent 80%),
     linear-gradient(-25deg, var(--brand-secondary), transparent 80%);
 
-  --background-image-brand: linear-gradient(45deg, #8481fa, #38c9c8);
+  --background-image-brand: linear-gradient(
+    45deg,
+    var(--brand-primary),
+    var(--brand-secondary)
+  );
+
+  --animate-slide-up: slide-up 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 }
 
 @layer base {
