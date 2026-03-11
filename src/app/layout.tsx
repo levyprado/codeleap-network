@@ -22,7 +22,9 @@ export default function RootLayout({
       <body className={`${inter.variable} relative isolate antialiased`}>
         <div className='fixed inset-0 z-0 bg-brand-glow opacity-30' />
 
-        {children}
+        <main className='relative grid min-h-dvh place-items-center px-4'>
+          {children}
+        </main>
       </body>
     </html>
   )
