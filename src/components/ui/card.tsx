@@ -9,7 +9,7 @@ export default function Card({
   return (
     <div
       className={cn(
-        'relative mx-auto flex w-full max-w-lg flex-col gap-6 rounded-xl border bg-card p-5 shadow-md',
+        'relative mx-auto flex w-full max-w-lg flex-col gap-6 rounded-xl border bg-card p-6 shadow-md',
         className,
       )}
       {...props}
