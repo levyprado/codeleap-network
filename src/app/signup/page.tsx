@@ -1,19 +1,10 @@
-import Button from '@/components/ui/button'
-import Card from '@/components/ui/card'
-import Input from '@/components/ui/input'
-import Label from '@/components/ui/label'
+import AuthCard from '@/components/auth-card'
+import { type Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Sign Up',
+}
 
 export default function SignupPage() {
-  return (
-    <Card title='Welcome to CodeLeap Network!' className='animate-slide-up'>
-      <form className='flex flex-col gap-4'>
-        <div className='flex flex-col gap-2.5'>
-          <Label>Please enter your username</Label>
-          <Input placeholder='levyprado' />
-        </div>
-
-        <Button className='mt-2'>Enter</Button>
-      </form>
-    </Card>
-  )
+  return <AuthCard />
 }
