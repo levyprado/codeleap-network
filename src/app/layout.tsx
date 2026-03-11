@@ -20,6 +20,8 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${inter.variable} relative isolate antialiased`}>
+        <div className='fixed inset-0 z-0 bg-brand-glow opacity-30' />
+
         {children}
       </body>
     </html>
