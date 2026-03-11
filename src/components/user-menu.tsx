@@ -16,7 +16,10 @@ export default function UserMenu() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className='flex size-9 items-center justify-center rounded-full bg-card font-bold text-accent uppercase'>
+      <DropdownMenuTrigger
+        aria-label='Open menu'
+        className='flex size-9 items-center justify-center rounded-full bg-card font-bold text-accent uppercase'
+      >
         {initial}
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
