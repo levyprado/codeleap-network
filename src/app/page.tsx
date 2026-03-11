@@ -1,14 +1,7 @@
 import Header from '@/components/header'
 import CreatePostForm from '@/components/post/create-post-form'
-import PostItem from '@/components/post/post-item'
-import Button from '@/components/ui/button'
-import { Icon } from '@/components/ui/icon'
-import Input from '@/components/ui/input'
-import {
-  ArrowUpDownIcon,
-  SearchIcon,
-  SlidersHorizontalIcon,
-} from '@hugeicons/core-free-icons'
+import FeedControls from '@/components/post/feed-controls'
+import PostList from '@/components/post/post-list'
 
 export default function HomePage() {
   return (
@@ -20,42 +13,9 @@ export default function HomePage() {
           <CreatePostForm />
         </div>
 
-        <div className='flex items-center justify-between gap-6 border-y border-border/50 px-4 py-3 md:px-8'>
-          <div className='relative w-full max-w-sm'>
-            <Input
-              aria-label='Search'
-              type='search'
-              placeholder='Search...'
-              className='peer ps-9'
-            />
-            <div className='peer pointer-events-none absolute inset-y-0 inset-s-0 flex items-center justify-center ps-2 text-muted-foreground/80 disabled:opacity-50'>
-              <Icon icon={SearchIcon} />
-            </div>
-          </div>
+        <FeedControls />
 
-          <div className='flex items-center gap-2'>
-            <Button size='sm' variant='outline'>
-              <Icon icon={ArrowUpDownIcon} />
-              <span className='hidden md:inline-block'>Sort</span>
-            </Button>
-            <Button size='sm' variant='outline'>
-              <Icon icon={SlidersHorizontalIcon} />{' '}
-              <span className='hidden md:inline-block'>Filter</span>
-            </Button>
-          </div>
-        </div>
-
-        <section className='custom-scrollbar flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto px-4 py-6 md:px-8'>
-          {[...Array(10).keys()].map((i) => (
-            <PostItem
-              key={i}
-              title='My First Post at CodeLeap Network!'
-              username='Victor'
-              content='Lorem ipsum dolor sit amet consectetur adipisicing elit...Lorem ipsum dolor sit amet consectetur adipisicing elit...Lorem ipsum dolor sit amet consectetur adipisicing elit...Lorem ipsum dolor sit amet consectetur adipisicing elit...'
-              timeAgo='25m'
-            />
-          ))}
-        </section>
+        <PostList />
       </div>
     </div>
   )
