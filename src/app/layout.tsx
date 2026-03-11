@@ -1,3 +1,4 @@
+import { siteConfig } from '@/lib/constants'
 import type { Metadata } from 'next'
 import { Inter_Tight } from 'next/font/google'
 import './globals.css'
@@ -8,8 +9,11 @@ const inter = Inter_Tight({
 })
 
 export const metadata: Metadata = {
-  title: 'CodeLeap Frontend Test',
-  description: 'Hands-on project for CodeLeap Frontend Developer position.',
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
 }
 
 export default function RootLayout({
