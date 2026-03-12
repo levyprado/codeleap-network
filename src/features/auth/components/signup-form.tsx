@@ -1,9 +1,9 @@
 'use client'
 
+import FormField from '@/components/form-field'
 import Button from '@/components/ui/button'
 import Icon from '@/components/ui/icon'
 import Input from '@/components/ui/input'
-import Label from '@/components/ui/label'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Loading03Icon } from '@hugeicons/core-free-icons'
 import { useForm } from 'react-hook-form'
@@ -28,10 +28,12 @@ export default function SignupForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
-      <div className='flex flex-col gap-2.5'>
-        <Label htmlFor='username'>
-          Please enter your username <span className='text-destructive'>*</span>
-        </Label>
+      <FormField
+        id='username'
+        label='Please enter your username'
+        error={errors.username}
+        required
+      >
         <Input
           id='username'
           type='text'
@@ -41,12 +43,7 @@ export default function SignupForm() {
           {...register('username')}
           aria-invalid={!!errors.username}
         />
-        {errors.username && (
-          <span className='animate-slide-up text-sm font-medium text-destructive'>
-            {errors.username.message}
-          </span>
-        )}
-      </div>
+      </FormField>
 
       <Button
         type='submit'
