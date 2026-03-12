@@ -25,3 +25,14 @@ export const useUpdatePost = (id: number) => {
     },
   })
 }
+
+export const useDeletePost = (id: number) => {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: () => postsApi.deletePost(id),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: postKeys.all })
+    },
+  })
+}
