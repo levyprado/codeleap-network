@@ -1,10 +1,10 @@
 'use client'
 
+import FormField from '@/components/form-field'
 import Button from '@/components/ui/button'
 import Icon from '@/components/ui/icon'
 import IconButton from '@/components/ui/icon-button'
 import Input from '@/components/ui/input'
-import Label from '@/components/ui/label'
 import Textarea from '@/components/ui/textarea'
 import { useAuthStore } from '@/features/auth/auth-store'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -22,6 +22,7 @@ export default function CreatePostForm() {
     formState: { errors, isSubmitting, isValid },
   } = useForm<CreatePostFormData>({
     resolver: zodResolver(createPostSchema),
+    mode: 'onChange',
   })
 
   const onSubmit = async (data: CreatePostFormData) => {
@@ -38,37 +39,23 @@ export default function CreatePostForm() {
       </h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
-        <div className='flex flex-col gap-2'>
-          <Label htmlFor='title'>Title</Label>
+        <FormField id='title' label='Title' error={errors.title}>
           <Input
             id='title'
             type='text'
             placeholder='How to join CodeLeap'
-            required
             {...register('title')}
             aria-invalid={!!errors.title}
           />
-          {errors.title && (
-            <span className='animate-slide-up text-sm font-medium text-destructive'>
-              {errors.title.message}
-            </span>
-          )}
-        </div>
-        <div className='flex flex-col gap-2.5'>
-          <Label htmlFor='content'>Content</Label>
+        </FormField>
+        <FormField id='content' label='Content' error={errors.content}>
           <Textarea
             id='content'
             placeholder='Create a good project in the challenge and...'
-            required
             {...register('content')}
             aria-invalid={!!errors.content}
           />
-          {errors.content && (
-            <span className='animate-slide-up text-sm font-medium text-destructive'>
-              {errors.content.message}
-            </span>
-          )}
-        </div>
+        </FormField>
 
         <div className='flex items-center justify-between pt-2'>
           <IconButton icon={ImageIcon} aria-label='Attach Image' />
