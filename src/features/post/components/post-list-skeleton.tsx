@@ -2,17 +2,22 @@ import Icon from '@/components/ui/icon'
 import IconButton from '@/components/ui/icon-button'
 import {
   Comment03Icon,
+  Delete02Icon,
   FavouriteIcon,
-  MoreHorizontalIcon,
+  PencilEdit02Icon,
   Share01Icon,
 } from '@hugeicons/core-free-icons'
 
 function PostItemSkeleton() {
   return (
     <div className='flex shrink-0 flex-col overflow-hidden rounded-xl border bg-card shadow-sm shadow-accent/30'>
-      <div className='flex h-12 items-center justify-between bg-accent px-4 py-3'>
+      <div className='flex h-13 items-center justify-between bg-accent px-4 py-3 md:px-6'>
         <div />
-        <Icon icon={MoreHorizontalIcon} className='animate-pulse' />
+
+        <div className='flex shrink-0 items-center gap-6'>
+          <Icon icon={PencilEdit02Icon} className='md:size-5' />
+          <Icon icon={Delete02Icon} className='md:size-5' />
+        </div>
       </div>
 
       <div className='flex flex-col gap-3 px-4 py-2.5'>
