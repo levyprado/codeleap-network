@@ -23,12 +23,12 @@ export default function PostItem({ post }: PostItemProps) {
 
   return (
     <article className='flex shrink-0 animate-slide-up flex-col overflow-hidden rounded-xl border bg-card shadow-sm shadow-accent/30 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-md'>
-      <div className='flex h-12 items-center justify-between gap-1 bg-accent px-4 md:h-14'>
+      <div className='flex min-h-12 items-center justify-between gap-1 bg-accent px-4 py-2 md:min-h-14'>
         <h3 className='leading-tight font-medium tracking-wide text-white md:text-lg'>
           {post.title}
         </h3>
 
-        {isOwner && <PostActions />}
+        {isOwner && <PostActions post={post} />}
       </div>
 
       <div className='flex flex-col gap-2 px-4 py-2.5'>
