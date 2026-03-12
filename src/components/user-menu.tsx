@@ -21,7 +21,7 @@ export default function UserMenu() {
     <DropdownMenu>
       <DropdownMenuTrigger
         aria-label='Open menu'
-        className='flex size-9 items-center justify-center rounded-full bg-card font-bold text-accent uppercase'
+        className='flex size-9 items-center justify-center rounded-full bg-card font-bold text-accent uppercase transition-all outline-none focus-visible:border-foreground focus-visible:ring-3 focus-visible:ring-foreground/50'
       >
         {initial}
       </DropdownMenuTrigger>
