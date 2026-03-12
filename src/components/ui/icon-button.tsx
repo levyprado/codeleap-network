@@ -13,7 +13,7 @@ export default function IconButton({
     <ButtonPrimitive
       data-slot='button'
       className={cn(
-        'group relative flex items-center gap-1.5 rounded-full p-2 text-sm font-medium text-muted-foreground transition-all hover:bg-accent/10 hover:text-accent focus-visible:text-accent',
+        'group relative flex shrink-0 items-center gap-1.5 rounded-full border border-transparent p-2 text-sm font-medium text-muted-foreground transition-all outline-none hover:bg-accent/10 hover:text-accent focus-visible:border-accent focus-visible:text-accent focus-visible:ring-3 focus-visible:ring-accent/50',
         className,
       )}
       {...props}
