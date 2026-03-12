@@ -10,6 +10,7 @@ import { useAuthStore } from '@/features/auth/auth-store'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ImageIcon, Loading03Icon } from '@hugeicons/core-free-icons'
 import { useForm } from 'react-hook-form'
+import { postsApi } from '../api'
 import { CreatePostFormData, createPostSchema } from '../types'
 
 export default function CreatePostForm() {
@@ -27,9 +28,12 @@ export default function CreatePostForm() {
 
   const onSubmit = async (data: CreatePostFormData) => {
     if (!username) return
-
-    reset()
-    console.log(data)
+    try {
+      await postsApi.createPost({ ...data, username })
+      reset()
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
