@@ -1,4 +1,5 @@
 import QueryProvider from '@/components/query-provider'
+import ThemeProvider from '@/components/theme-provider'
 import Icon from '@/components/ui/icon'
 import AuthGuard from '@/features/auth/components/auth-guard'
 import { siteConfig } from '@/lib/constants'
@@ -32,6 +33,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${inter.variable} relative isolate antialiased`}>
+        <ThemeProvider />
         <div className='fixed inset-0 z-0 bg-brand-glow opacity-30' />
 
         <main className='relative grid min-h-dvh place-items-center overflow-hidden px-4'>
