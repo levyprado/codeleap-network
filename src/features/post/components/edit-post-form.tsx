@@ -33,15 +33,17 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     defaultValues: { title: post.title, content: post.content },
   })
 
-  const onSubmit = async (data: CreatePostFormData) => {
+  const onSubmit = (data: CreatePostFormData) => {
     if (username !== post.username) return
 
-    try {
-      await updatePostMutation.mutateAsync(data)
-      close()
-    } catch (error) {
-      console.error(error)
-    }
+    updatePostMutation.mutate(data, {
+      onSuccess: () => {
+        close()
+      },
+      onError: (error) => {
+        console.error(error)
+      },
+    })
   }
 
   return (
