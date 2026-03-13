@@ -1,16 +1,12 @@
 import Button from '@/components/ui/button'
 import Icon from '@/components/ui/icon'
 import Input from '@/components/ui/input'
-import {
-  ArrowUpDownIcon,
-  SearchIcon,
-  SlidersHorizontalIcon,
-} from '@hugeicons/core-free-icons'
+import { ArrowUpDownIcon, SearchIcon } from '@hugeicons/core-free-icons'
 
 export default function FeedControls() {
   return (
     <div className='flex items-center justify-between gap-6 border-y border-border/50 px-4 py-3 md:px-8'>
-      <div className='relative w-full max-w-sm'>
+      <div className='relative w-full max-w-xs'>
         <Input
           aria-label='Search'
           type='search'
@@ -26,10 +22,6 @@ export default function FeedControls() {
         <Button size='sm' variant='outline' aria-label='Sort'>
           <Icon icon={ArrowUpDownIcon} />
           <span className='hidden md:inline-block'>Sort</span>
-        </Button>
-        <Button size='sm' variant='outline' aria-label='Filter'>
-          <Icon icon={SlidersHorizontalIcon} />{' '}
-          <span className='hidden md:inline-block'>Filter</span>
         </Button>
       </div>
     </div>
