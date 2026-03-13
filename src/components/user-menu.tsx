@@ -2,11 +2,11 @@
 
 import { useAuthStore } from '@/features/auth/auth-store'
 import { Theme, useThemeStore } from '@/lib/theme-store'
-import { cn } from '@/lib/utils'
 import {
   ComputerPhoneSyncIcon,
   LogoutIcon,
   Moon02Icon,
+  PaintBoardIcon,
   SunIcon,
 } from '@hugeicons/core-free-icons'
 import type { IconSvgElement } from '@hugeicons/react'
@@ -16,7 +16,13 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
 import Icon from './ui/icon'
@@ -46,16 +52,30 @@ export default function UserMenu() {
             @{username}
           </DropdownMenuLabel>
 
-          {themes.map(({ value, label, icon }) => (
-            <DropdownMenuItem
-              key={value}
-              onClick={() => setTheme(value)}
-              className={cn(theme === value && 'text-accent')}
-            >
-              <Icon icon={icon} />
-              {label}
-            </DropdownMenuItem>
-          ))}
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>
+              <Icon icon={PaintBoardIcon} />
+              Theme
+            </DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>Appearance</DropdownMenuLabel>
+                  <DropdownMenuRadioGroup
+                    value={theme}
+                    onValueChange={setTheme}
+                  >
+                    {themes.map(({ value, label, icon }) => (
+                      <DropdownMenuRadioItem key={value} value={value}>
+                        <Icon icon={icon} />
+                        {label}
+                      </DropdownMenuRadioItem>
+                    ))}
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuGroup>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
 
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={logout} variant='destructive'>
