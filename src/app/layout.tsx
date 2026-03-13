@@ -31,7 +31,7 @@ const toasterProps: ToasterProps = {
   visibleToasts: 1,
   offset: 36,
   mobileOffset: 32,
-  duration: 3000,
+  duration: 2000,
   icons: {
     success: <Icon icon={CheckmarkCircle01Icon} size={20} />,
     error: <Icon icon={CancelCircleIcon} size={20} />,
