@@ -20,22 +20,29 @@ export default function CreatePostForm() {
   const {
     register,
     handleSubmit,
-    reset,
+    resetField,
     formState: { errors, isValid },
   } = useForm<CreatePostFormData>({
     resolver: zodResolver(createPostSchema),
     mode: 'onChange',
+    defaultValues: { title: '', content: '' },
   })
 
-  const onSubmit = async (data: CreatePostFormData) => {
+  const onSubmit = (data: CreatePostFormData) => {
     if (!username) return
 
-    try {
-      await createPostMutation.mutateAsync({ ...data, username })
-      reset()
-    } catch (error) {
-      console.error(error)
-    }
+    createPostMutation.mutate(
+      { ...data, username },
+      {
+        onSuccess: () => {
+          resetField('title')
+          resetField('content')
+        },
+        onError: (error) => {
+          console.error(error)
+        },
+      },
+    )
   }
 
   return (
@@ -50,21 +57,25 @@ export default function CreatePostForm() {
             id='title'
             type='text'
             placeholder='How to join CodeLeap'
-            {...register('title')}
             aria-invalid={!!errors.title}
+            {...register('title')}
           />
         </FormField>
         <FormField id='content' label='Content' error={errors.content}>
           <Textarea
             id='content'
             placeholder='Create a good project in the challenge and...'
-            {...register('content')}
             aria-invalid={!!errors.content}
+            {...register('content')}
           />
         </FormField>
 
         <div className='flex items-center justify-between pt-2'>
-          <IconButton icon={ImageIcon} aria-label='Attach Image' />
+          <IconButton
+            type='button'
+            icon={ImageIcon}
+            aria-label='Attach Image'
+          />
 
           <Button
             type='submit'
