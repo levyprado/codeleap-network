@@ -3,12 +3,11 @@
 import FormField from '@/components/form-field'
 import Button from '@/components/ui/button'
 import Icon from '@/components/ui/icon'
-import IconButton from '@/components/ui/icon-button'
 import Input from '@/components/ui/input'
 import Textarea from '@/components/ui/textarea'
 import { useAuthStore } from '@/features/auth/auth-store'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { ImageIcon, Loading03Icon } from '@hugeicons/core-free-icons'
+import { Loading03Icon } from '@hugeicons/core-free-icons'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { useCreatePost } from '../mutations'
@@ -73,13 +72,7 @@ export default function CreatePostForm() {
           />
         </FormField>
 
-        <div className='flex items-center justify-between pt-2'>
-          <IconButton
-            type='button'
-            icon={ImageIcon}
-            aria-label='Attach Image'
-          />
-
+        <div className='flex pt-2'>
           <Button
             type='submit'
             disabled={createPostMutation.isPending || !isValid}
