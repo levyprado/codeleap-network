@@ -10,6 +10,7 @@ import { Dialog } from '@base-ui/react/dialog'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Loading03Icon } from '@hugeicons/core-free-icons'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 import { useUpdatePost } from '../mutations'
 import { CreatePostFormData, createPostSchema, Post } from '../types'
 import { usePostActionDialog } from './post-action-dialog'
@@ -39,9 +40,10 @@ export default function EditPostForm({ post }: EditPostFormProps) {
     updatePostMutation.mutate(data, {
       onSuccess: () => {
         close()
+        toast.success('Post updated')
       },
-      onError: (error) => {
-        console.error(error)
+      onError: () => {
+        console.error('Failed to update post')
       },
     })
   }

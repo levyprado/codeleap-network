@@ -10,6 +10,7 @@ import { useAuthStore } from '@/features/auth/auth-store'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ImageIcon, Loading03Icon } from '@hugeicons/core-free-icons'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 import { useCreatePost } from '../mutations'
 import { CreatePostFormData, createPostSchema } from '../types'
 
@@ -37,9 +38,11 @@ export default function CreatePostForm() {
         onSuccess: () => {
           resetField('title')
           resetField('content')
+
+          toast.success('Post created')
         },
-        onError: (error) => {
-          console.error(error)
+        onError: () => {
+          toast.error('Failed to create post')
         },
       },
     )

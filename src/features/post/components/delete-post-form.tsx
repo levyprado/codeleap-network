@@ -1,6 +1,7 @@
 import Button from '@/components/ui/button'
 import Icon from '@/components/ui/icon'
 import { Loading03Icon } from '@hugeicons/core-free-icons'
+import { toast } from 'sonner'
 import { useDeletePost } from '../mutations'
 import { usePostActionDialog } from './post-action-dialog'
 
@@ -16,9 +17,10 @@ export default function DeletePostForm({ postId }: DeletePostFormProps) {
     deletePostMutation.mutate(undefined, {
       onSuccess: () => {
         close()
+        toast.success('Post deleted')
       },
-      onError: (error) => {
-        console.error(error)
+      onError: () => {
+        console.error('Failed to delete post')
       },
     })
   }
