@@ -12,13 +12,15 @@ export default function DeletePostForm({ postId }: DeletePostFormProps) {
   const { close } = usePostActionDialog()
   const deletePostMutation = useDeletePost(postId)
 
-  const handleDelete = async () => {
-    try {
-      await deletePostMutation.mutateAsync()
-      close()
-    } catch (error) {
-      console.error(error)
-    }
+  const handleDelete = () => {
+    deletePostMutation.mutate(undefined, {
+      onSuccess: () => {
+        close()
+      },
+      onError: (error) => {
+        console.error(error)
+      },
+    })
   }
 
   return (
