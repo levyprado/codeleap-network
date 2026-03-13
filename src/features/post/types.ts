@@ -8,6 +8,13 @@ export type Post = {
   content: string
 }
 
+export type PaginatedPostsResponse = {
+  count: number
+  next: string | null
+  previous: string | null
+  results: Post[]
+}
+
 export const createPostSchema = z.object({
   title: z
     .string()

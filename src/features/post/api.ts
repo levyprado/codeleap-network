@@ -1,5 +1,6 @@
+import { POSTS_LIMIT } from '@/lib/constants'
 import axios from 'axios'
-import type { CreatePostPayload, Post } from './types'
+import type { CreatePostPayload, PaginatedPostsResponse, Post } from './types'
 
 const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL
 
@@ -8,7 +9,12 @@ const api = axios.create({
 })
 
 export const postsApi = {
-  getPosts: () => api.get<{ results: Post[] }>('').then((res) => res.data),
+  getPosts: ({ offset = 0 }) =>
+    api
+      .get<PaginatedPostsResponse>('', {
+        params: { limit: POSTS_LIMIT, offset },
+      })
+      .then((res) => res.data),
 
   createPost: (data: CreatePostPayload) =>
     api.post<Post>('', data).then((res) => res.data),
